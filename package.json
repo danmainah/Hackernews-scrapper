@@ -1,0 +1,26 @@
+{
+  "name": "hackernews-scrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danmainah/Hackernews-scrapper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danmainah/Hackernews-scrapper/issues"
+  },
+  "homepage": "https://github.com/danmainah/Hackernews-scrapper#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "mysql2": "^3.12.0",
+    "ws": "^8.18.0"
+  }
+}
