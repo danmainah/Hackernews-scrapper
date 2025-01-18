@@ -1,14 +1,17 @@
 const WebSocket = require('ws');
 const db = require('./db');
-const { scrapeHackerNews } = require('./scraper');
+const { scrapeAndBroadcastStories } = require('./scraper');
 
 const wss = new WebSocket.Server({ port: 8080 });
+const clients = [];
 
 wss.on('connection', async (ws) => {
-    const recentStories = await db.getRecentStories();
-    ws.send(JSON.stringify({ type: 'initial', stories: recentStories }));
+    clients.push(ws);
 
-    scrapeHackerNews(); 
+    const recentStoriesCount = await db.getRecentStoriesCount(5);
+    ws.send(JSON.stringify({ type: 'initial', storiesCount: recentStoriesCount }));
+
+    scrapeAndBroadcastStories();
 
     ws.on('close', () => {
         console.log('Client disconnected');
